@@ -104,6 +104,14 @@
     :cond_1
     iget-object v0, v3, Lgzz;->b:Lihk;
 
+    invoke-virtual {v0}, Lihk;->d()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_2
+
+    iget-object v0, v3, Lgzz;->b:Lihk;
+
     iget-boolean v0, v0, Lihk;->f:Z
 
     if-nez v0, :cond_2

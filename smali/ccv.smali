@@ -573,7 +573,7 @@
 
     move-result-object v2
 
-    const-string v9, "pref_input_model_key"
+    const-string v9, "pref_enable_noise_key"
 
     invoke-interface {v2, v9}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
 
@@ -658,26 +658,6 @@
     const/4 v7, 0x1
 
     if-eq v3, v7, :cond_9
-
-    const/4 v7, 0x2
-
-    if-eq v3, v7, :cond_a
-
-    const/4 v7, 0x3
-
-    if-eq v3, v7, :cond_b
-
-    const/4 v7, 0x4
-
-    if-eq v3, v7, :cond_c
-
-    const/4 v7, 0x5
-
-    if-eq v3, v7, :cond_d
-
-    const/4 v7, 0x6
-
-    if-eq v3, v7, :cond_e
 
     if-gt v3, v7, :cond_8
 
@@ -1030,7 +1010,7 @@
     goto/16 :goto_6
 
     :cond_8
-    invoke-static {v6}, Lcok;->aa(Lgdq;)Lcom/google/googlex/gcam/StaticMetadata;
+    invoke-static {v6}, Lcok;->a(Lgdq;)Lcom/google/googlex/gcam/StaticMetadata;
 
     move-result-object v6
 
@@ -1039,52 +1019,7 @@
     goto/16 :goto_1
 
     :cond_9
-    invoke-static {v6}, Lcok;->ab(Lgdq;)Lcom/google/googlex/gcam/StaticMetadata;
-
-    move-result-object v6
-
-    invoke-virtual {v5, v6}, Lcom/google/googlex/gcam/StaticMetadataVector;->add(Lcom/google/googlex/gcam/StaticMetadata;)V
-
-    goto/16 :goto_1
-
-    :cond_a
-    invoke-static {v6}, Lcok;->ac(Lgdq;)Lcom/google/googlex/gcam/StaticMetadata;
-
-    move-result-object v6
-
-    invoke-virtual {v5, v6}, Lcom/google/googlex/gcam/StaticMetadataVector;->add(Lcom/google/googlex/gcam/StaticMetadata;)V
-
-    goto/16 :goto_1
-
-    :cond_b
-    invoke-static {v6}, Lcok;->ad(Lgdq;)Lcom/google/googlex/gcam/StaticMetadata;
-
-    move-result-object v6
-
-    invoke-virtual {v5, v6}, Lcom/google/googlex/gcam/StaticMetadataVector;->add(Lcom/google/googlex/gcam/StaticMetadata;)V
-
-    goto/16 :goto_1
-
-    :cond_c
-    invoke-static {v6}, Lcok;->ae(Lgdq;)Lcom/google/googlex/gcam/StaticMetadata;
-
-    move-result-object v6
-
-    invoke-virtual {v5, v6}, Lcom/google/googlex/gcam/StaticMetadataVector;->add(Lcom/google/googlex/gcam/StaticMetadata;)V
-
-    goto/16 :goto_1
-
-    :cond_d
-    invoke-static {v6}, Lcok;->af(Lgdq;)Lcom/google/googlex/gcam/StaticMetadata;
-
-    move-result-object v6
-
-    invoke-virtual {v5, v6}, Lcom/google/googlex/gcam/StaticMetadataVector;->add(Lcom/google/googlex/gcam/StaticMetadata;)V
-
-    goto/16 :goto_1
-
-    :cond_e
-    invoke-static {v6}, Lcok;->ag(Lgdq;)Lcom/google/googlex/gcam/StaticMetadata;
+    invoke-static {v6}, Lcok;->aa(Lgdq;)Lcom/google/googlex/gcam/StaticMetadata;
 
     move-result-object v6
 

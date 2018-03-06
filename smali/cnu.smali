@@ -101,7 +101,7 @@
 
     iget-object v2, p0, Lcnu;->e:Lbhn;
 
-    invoke-virtual {v2}, Lbhn;->cpc()I
+    invoke-virtual {v2}, Lbhn;->j()I
 
     move-result v2
 
@@ -125,6 +125,10 @@
 
     if-ge v2, v3, :cond_4
 
+    const/4 v3, 0x5
+
+    if-ge v2, v3, :cond_5
+
     :goto_0
     iget-object v2, p0, Lcnu;->f:Lihp;
 
@@ -146,21 +150,26 @@
     goto :goto_0
 
     :cond_1
-    const/16 v1, 0xe
+    const/4 v1, 0x7
 
     goto :goto_0
 
     :cond_2
-    const/16 v1, 0x18
+    const/16 v1, 0xe
 
     goto :goto_0
 
     :cond_3
-    const/16 v1, 0x23
+    const/16 v1, 0x18
 
     goto :goto_0
 
     :cond_4
+    const/16 v1, 0x23
+
+    goto :goto_0
+
+    :cond_5
     const/16 v1, 0x2e
 
     goto :goto_0

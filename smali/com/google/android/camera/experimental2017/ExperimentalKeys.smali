@@ -245,7 +245,7 @@
 
     new-instance v0, Landroid/hardware/camera2/CaptureResult$Key;
 
-    const-string/jumbo v1, "com.google.nexus.experimental2016.control.af_scene_change"
+    const-string/jumbo v1, "android.control.sceneMode"
 
     sget-object v2, Ljava/lang/Integer;->TYPE:Ljava/lang/Class;
 
@@ -325,7 +325,7 @@
 
     new-instance v0, Landroid/hardware/camera2/CaptureRequest$Key;
 
-    const-string/jumbo v1, "com.google.nexus.experimental2017.control.tracking_af_trigger"
+    const-string/jumbo v1, "android.control.afTrigger"
 
     sget-object v2, Ljava/lang/Byte;->TYPE:Ljava/lang/Class;
 
@@ -335,7 +335,7 @@
 
     new-instance v0, Landroid/hardware/camera2/CaptureResult$Key;
 
-    const-string/jumbo v1, "com.google.nexus.experimental2017.control.af_regions_confidence"
+    const-string/jumbo v1, "android.control.afRegions"
 
     const-class v2, [I
 
@@ -395,7 +395,7 @@
 
     new-instance v0, Landroid/hardware/camera2/CaptureResult$Key;
 
-    const-string/jumbo v1, "com.google.nexus.experimental2017.control.exposure_time_boost"
+    const-string/jumbo v1, "android.reprocess.effectiveExposureFactor"
 
     sget-object v2, Ljava/lang/Float;->TYPE:Ljava/lang/Class;
 

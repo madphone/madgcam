@@ -39,13 +39,17 @@
     return-object v0
 
     :cond_0
+    sget v1, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    const/16 v2, 0x1b
+
+    if-lt v1, v2, :cond_3
+
     iget-object v1, p0, Lbel;->a:Lgzz;
 
     invoke-virtual {v1}, Lgzz;->c()Z
 
     move-result v1
-
-    const/4 v1, 0x0
 
     if-nez v1, :cond_1
 
@@ -54,8 +58,6 @@
     invoke-virtual {v1}, Lgzz;->b()Z
 
     move-result v1
-
-    const/4 v1, 0x0
 
     if-eqz v1, :cond_3
 

@@ -51,8 +51,6 @@
 
 .field private R:Leqd;
 
-.field public RefocusMB:I
-
 .field private S:Lbqj;
 
 .field private T:Leut;
@@ -1197,7 +1195,7 @@
 
     const/4 v0, 0x3
 
-    invoke-virtual {v1}, Lbhn;->refocusmp()I
+    invoke-virtual {v1}, Lbhn;->n()I
 
     move-result v0
 
