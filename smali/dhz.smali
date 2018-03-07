@@ -139,17 +139,9 @@
 .end method
 
 .method static a(Lgdq;Lbhn;)Ljht;
-    .locals 4
+    .locals 3
 
-    const/4 v2, -0x1
-
-    sget-object v3, Landroid/hardware/camera2/CameraCharacteristics;->INFO_SUPPORTED_HARDWARE_LEVEL:Landroid/hardware/camera2/CameraCharacteristics$Key;
-
-    invoke-interface {p0, v3}, Lgdq;->a(Landroid/hardware/camera2/CameraCharacteristics$Key;)Ljava/lang/Object;
-
-    move-result-object v3
-
-    check-cast v3, Ljava/lang/Integer;
+    const/4 v2, 0x1
 
     sget-object v0, Landroid/hardware/camera2/CameraCharacteristics;->LENS_FACING:Landroid/hardware/camera2/CameraCharacteristics$Key;
 
@@ -190,51 +182,6 @@
     goto :goto_0
 
     :pswitch_0
-    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
-
-    move-result v3
-
-    const/4 v1, 0x0
-
-    if-ne v3, v1, :cond_1
-
-    const/4 v0, 0x2
-
-    :goto_1
-    invoke-static {v0}, Ldij;->a(I)Ljht;
-
-    move-result-object v0
-
-    goto :goto_0
-
-    :cond_1
-    const/4 v1, 0x1
-
-    if-ne v3, v1, :cond_2
-
-    const/4 v0, 0x4
-
-    goto :goto_1
-
-    :cond_2
-    const/4 v1, 0x2
-
-    if-ne v3, v1, :cond_3
-
-    const/4 v0, 0x1
-
-    goto :goto_1
-
-    :cond_3
-    const/4 v1, 0x3
-
-    if-ne v3, v1, :cond_4
-
-    const/4 v0, 0x0
-
-    goto :goto_1
-
-    :cond_4
     iget-object v0, p1, Lbhn;->a:Landroid/content/ContentResolver;
 
     const-string v1, "camera:capture_support_level_override_back"
@@ -243,54 +190,68 @@
 
     move-result v0
 
-    goto :goto_1
-
-    :pswitch_1
-    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
-
-    move-result v3
-
-    const/4 v1, 0x0
-
-    if-ne v3, v1, :cond_5
-
-    const/4 v0, 0x2
-
-    :goto_2
     invoke-static {v0}, Ldij;->a(I)Ljht;
 
     move-result-object v0
 
     goto :goto_0
 
-    :cond_5
-    const/4 v1, 0x1
+    :pswitch_1
+    iget-object v0, p1, Lbhn;->b:Lgzz;
 
-    if-ne v3, v1, :cond_6
+    iget-object v0, v0, Lgzz;->c:Lihj;
 
-    const/4 v0, 0x4
+    iget-boolean v0, v0, Lihj;->b:Z
 
-    goto :goto_2
+    if-eqz v0, :cond_2
 
-    :cond_6
-    const/4 v1, 0x2
+    iget-object v0, p1, Lbhn;->b:Lgzz;
 
-    if-ne v3, v1, :cond_7
+    iget-object v0, v0, Lgzz;->b:Lihk;
 
+    iget-boolean v0, v0, Lihk;->a:Z
+
+    if-nez v0, :cond_1
+
+    iget-object v0, p1, Lbhn;->b:Lgzz;
+
+    iget-object v0, v0, Lgzz;->b:Lihk;
+
+    iget-boolean v0, v0, Lihk;->c:Z
+
+    if-eqz v0, :cond_2
+
+    :cond_1
     const/4 v0, 0x1
 
-    goto :goto_2
+    :goto_1
+    invoke-static {v0}, Ldij;->a(I)Ljht;
 
-    :cond_7
-    const/4 v1, 0x3
+    move-result-object v0
 
-    if-ne v3, v1, :cond_8
+    goto :goto_0
 
-    const/4 v0, 0x0
+    :cond_2
+    sget-object v0, Landroid/hardware/camera2/CameraCharacteristics;->INFO_SUPPORTED_HARDWARE_LEVEL:Landroid/hardware/camera2/CameraCharacteristics$Key;
 
-    goto :goto_2
+    invoke-interface {p0, v0}, Lgdq;->a(Landroid/hardware/camera2/CameraCharacteristics$Key;)Ljava/lang/Object;
 
-    :cond_8
+    move-result-object v0
+
+    check-cast v0, Ljava/lang/Integer;
+
+    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
+
+    move-result v0
+
+    const/4 v1, 0x0
+
+    if-eq v0, v1, :cond_3
+
+    const/4 v1, 0x2
+
+    if-eq v0, v1, :cond_3
+
     iget-object v0, p1, Lbhn;->a:Landroid/content/ContentResolver;
 
     const-string v1, "camera:capture_support_level_override_front"
@@ -299,7 +260,46 @@
 
     move-result v0
 
-    goto :goto_2
+    goto :goto_1
+
+    :cond_3
+    sget-object v0, Landroid/os/Build;->DEVICE:Ljava/lang/String;
+
+    const-string v1, "capricorn"
+
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_4
+
+    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    const/16 v1, 0x1a
+
+    if-ge v0, v1, :cond_4
+
+    const/4 v0, 0x4
+
+    goto :goto_1
+
+    :cond_4
+    const/16 v1, 0x9
+
+    invoke-virtual {p1}, Lbhn;->cgc()I
+
+    move-result v0
+
+    if-eq v0, v1, :cond_5
+
+    const/4 v0, 0x3
+
+    goto :goto_1
+
+    :cond_5
+    const/4 v0, 0x1
+
+    goto :goto_1
 
     :pswitch_data_0
     .packed-switch 0x0

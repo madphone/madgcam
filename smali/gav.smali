@@ -299,8 +299,6 @@
 
     iget-boolean v0, v0, Lihj;->e:Z
 
-    const/4 v0, 0x1
-
     if-nez v0, :cond_0
 
     move v0, v1

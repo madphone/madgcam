@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 
 Name: AndroidManifest.xml
-SHA-256-Digest: dfbUGS/YjXuT2rkxAndPUnfXcp6fJ/y2SAXa50f2GLM=
+SHA-256-Digest: qVKiqV+G7qCX8f1EqWRt0T16NSXBBphHskDTcZ56Xwo=
 
 Name: assets/camera_wear_app_PlaystoreRelease.apk
 SHA-256-Digest: g5/s9+2uYlpkjA3t2H28wJATY3b+kY//y5iK4j5weNc=
@@ -17,6 +17,11 @@ SHA-256-Digest: z4GaR6N+OIb5ZuYAhvi0EEAdj3pNBU4K5xb/zXeHScA=
 Name: assets/com.google.android.vision.face/models/classification/fron
  tal_face_classifiers.4/is_smiling-y0.5-wmd.bin
 SHA-256-Digest: GiVzcnD4oXQERTDRraSVvakccPs25vG/wUOaP4M7yaI=
+
+Name: assets/com.google.android.vision.face/models/detection/multi_pos
+ e_face_landmark_detectors.8/bottom_mouth-y0-yi45-p0-pi45-r0-ri20.lg_3
+ 2-tree7-wmd.bin
+SHA-256-Digest: KJJzvFXDfiz+Hfl0/mvFmAro9ozeWj8vBZGLl+O3i2Y=
 
 Name: assets/com.google.android.vision.face/models/detection/multi_pos
  e_face_landmark_detectors.8/landmark_group_meta_data.bin
@@ -84,7 +89,10 @@ Name: build-data.properties
 SHA-256-Digest: MhHJXBBzzqSoI7hNN3xOqvJehiI2yfVYvXbMr6HAD6E=
 
 Name: classes.dex
-SHA-256-Digest: qq5A+811rDlcoSqnEFimYjDOcKq6242H5auwHkVDN4U=
+SHA-256-Digest: sMooaU6OauMHcWHH+Z0oTzxXY89iLGkG+8wIOux5RYQ=
+
+Name: lib/arm64-v8a/gdbserver
+SHA-256-Digest: 3Ig++UzDHo6z3mE93ddxyZOa/BjFoRF/ys4d7HHJNZ4=
 
 Name: lib/arm64-v8a/libAndroidJniUtilsJni.so
 SHA-256-Digest: KgcQRxaW2+c0CKs4N12vH+8wwEDSpQDQxI25cf1+ls0=
@@ -112,6 +120,9 @@ SHA-256-Digest: 3TBQ5kDPxT9V1BZtzkJ7B0r5VTpSvGCDoQON6MoNaW0=
 
 Name: lib/arm64-v8a/libhalide_hexagon_host_app.so
 SHA-256-Digest: L2HnqYD0a+q31nZp/kKjSevP4vd6Vkw8rRZiOZqeov0=
+
+Name: lib/arm64-v8a/libhello-jni.so
+SHA-256-Digest: KH/6vhiBOD/zJHduPmeRNM/ragxMpWmUZ3GPpLj+W1s=
 
 Name: lib/arm64-v8a/libjni_faceutil.so
 SHA-256-Digest: 0WmNRpv44UDVTcJVtkUI6dsYgmqlw0BiwgPFNJ1+XTk=
@@ -3761,9 +3772,6 @@ Name: res/mipmap-xxxhdpi-v4/product_logo_camera_round_launcher_color_4
  8.png
 SHA-256-Digest: 7eA9oyxi9Ewkj9QXOWp//FB1ef20XWQSavffYI9h9Fc=
 
-Name: res/mipmap/adaptiveproduct_pixelcamera_launcher.xml
-SHA-256-Digest: UbCvE40nlNnnc4NRsSP9S5BBrvnFG4Af6yTEX1RTFUM=
-
 Name: res/raw/animating_frame_list_view_shader.glsl
 SHA-256-Digest: xeOO0VY+iLZZNe67uIClpO5OoSIeH21bfJkMukNoDO4=
 
@@ -3843,17 +3851,17 @@ Name: res/raw/video_stop.ogg
 SHA-256-Digest: mWL/9WSE/Ix3BeYvwDpQ8WLy5cMWnddztS6Csbdb16Q=
 
 Name: res/xml/additional_preferences.xml
-SHA-256-Digest: CtJaetsWWfA92CW5xN8bXDH2Oknt8mu736tD6rK9Wgs=
+SHA-256-Digest: c9RMPpAhqRdKtLSfzTG7GgTVUjYZNhZ8VRidOHfSH/w=
 
 Name: res/xml/camera_preferences.xml
-SHA-256-Digest: WqMNFNmRYnKJM0CJTa0k7SGmpX5rBMECs7mrLMXGZBg=
+SHA-256-Digest: AgGzo4CoLKEON9Pl3iUsEBZU7WxAJx72Vzf7EIMkZX4=
 
 Name: res/xml/shortcuts.xml
-SHA-256-Digest: Glzz6rGraLf6Zild44PsPypsHrsKluolAVYOnCNFIvY=
+SHA-256-Digest: 7ai7Mcvp6TTZeKYTc+KZj7OwxdGb7vP+uFHtY/mGMEA=
 
 Name: res/xml/wearable_description.xml
 SHA-256-Digest: 8IwlOZsRUWHW1aCIIp1bK8lmzQJiiZO2ddy+ziDqcHQ=
 
 Name: resources.arsc
-SHA-256-Digest: M2VSeeavhrLItfKeMIqNNoxm1XLJqYNrvNnYz3LQL+s=
+SHA-256-Digest: JfvaiouzMjfko9kjk2Aek4Whk/KusV3grA5pFwvIeEc=
 

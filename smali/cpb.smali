@@ -340,7 +340,7 @@
 
     invoke-virtual {v0, v2}, Lcom/google/googlex/gcam/InitParams;->setThread_count(I)V
 
-    const/4 v2, 0x1
+    const/4 v2, 0x0
 
     invoke-virtual {v0, v2}, Lcom/google/googlex/gcam/InitParams;->setTuning_locked(Z)V
 
@@ -382,7 +382,7 @@
 
     iget-object v2, v2, Lcnu;->e:Lbhn;
 
-    invoke-virtual {v2}, Lbhn;->j()I
+    invoke-virtual {v2}, Lbhn;->cpc()I
 
     move-result v2
 
@@ -505,27 +505,27 @@
     goto/16 :goto_1
 
     :cond_4
-    const/4 v4, 0x7
+    const/4 v4, 0x3
 
     goto/16 :goto_1
 
     :cond_5
-    const/16 v4, 0xe
+    const/16 v4, 0x3
 
     goto/16 :goto_1
 
     :cond_6
-    const/16 v4, 0x18
+    const/16 v4, 0x3
 
     goto/16 :goto_1
 
     :cond_7
-    const/16 v4, 0x23
+    const/16 v4, 0x3
 
     goto/16 :goto_1
 
     :cond_8
-    const/16 v4, 0x2e
+    const/16 v4, 0x3
 
     goto/16 :goto_1
 

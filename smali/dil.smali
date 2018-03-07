@@ -15,6 +15,8 @@
 # static fields
 .field private static a:Ljava/lang/String;
 
+.field private static sHDRParams:I
+
 
 # instance fields
 .field private b:Ldih;
@@ -66,15 +68,31 @@
 .end method
 
 .method private static a(Ldii;)I
-    .locals 1
+    .locals 3
+
+    const-wide/32 v0, 0x3b9aca00
+
+    sput-wide v0, Lecw;->a:J
 
     iget v0, p0, Ldii;->b:I
+
+    sget v1, Ldil;->sHDRParams:I
+
+    const/16 v2, 0x8
+
+    if-eq v1, v2, :cond_0
 
     add-int/lit8 v0, v0, 0x3
 
     add-int/lit8 v0, v0, 0x2
 
+    :goto_0
     return v0
+
+    :cond_0
+    add-int/lit8 v0, v0, 0x3
+
+    goto/16 :goto_0
 .end method
 
 .method private static a(Ldii;Lgdq;)Ldql;
@@ -121,7 +139,7 @@
 
     const/4 v4, 0x3
 
-    const/4 v5, 0x2
+    const/4 v5, 0x0
 
     const/4 v1, 0x1
 
@@ -585,26 +603,48 @@
 
     invoke-static {}, Ldig;->h()Z
 
-    iget-object v0, p0, Ldil;->e:Lgzz;
+    iget-object v0, p0, Ldil;->d:Lbhn;
 
-    invoke-virtual {v0}, Lgzz;->k()Z
+    invoke-static {v0, p2}, LcokMod;->updateGcam(Lbhn;Lgdq;)V
+
+    invoke-virtual {v0}, Lbhn;->cpc()I
+
+    move-result v6
+
+    sput v6, Ldil;->sHDRParams:I
+
+    invoke-virtual {v0}, Lbhn;->qhdrf()I
 
     move-result v0
 
-    if-nez v0, :cond_0
+    const/4 v6, 0x0
 
-    invoke-interface {p2}, Lgdq;->b()Lige;
+    if-gt v0, v6, :cond_0
+
+    sget-object v0, Landroid/hardware/camera2/CameraCharacteristics;->INFO_SUPPORTED_HARDWARE_LEVEL:Landroid/hardware/camera2/CameraCharacteristics$Key;
+
+    invoke-interface {p2, v0}, Lgdq;->a(Landroid/hardware/camera2/CameraCharacteristics$Key;)Ljava/lang/Object;
 
     move-result-object v0
 
-    sget-object v6, Lige;->a:Lige;
+    check-cast v0, Ljava/lang/Integer;
 
-    if-eq v0, v6, :cond_9
+    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
+
+    move-result v0
+
+    const/4 v6, 0x0
+
+    if-eq v0, v6, :cond_1e
+
+    const/4 v6, 0x2
+
+    if-eq v0, v6, :cond_1e
 
     :cond_0
     iget-object v0, p0, Ldil;->d:Lbhn;
 
-    invoke-virtual {v0}, Lbhn;->k()I
+    invoke-virtual {v0}, Lbhn;->cgc()I
 
     move-result v0
 
@@ -614,7 +654,7 @@
 
     const/4 v6, 0x1
 
-    if-eq v0, v6, :cond_4
+    if-eq v0, v6, :cond_3
 
     const/4 v6, 0x2
 
@@ -622,17 +662,50 @@
 
     const/4 v6, 0x3
 
-    if-eq v0, v6, :cond_8
+    if-eq v0, v6, :cond_a
+
+    const/4 v6, 0x4
+
+    if-eq v0, v6, :cond_a
+
+    const/4 v6, 0x5
+
+    if-eq v0, v6, :cond_10
+
+    const/4 v6, 0x6
+
+    if-eq v0, v6, :cond_10
+
+    const/4 v6, 0x7
+
+    if-eq v0, v6, :cond_16
+
+    const/16 v6, 0x8
+
+    if-eq v0, v6, :cond_19
+
+    const/16 v6, 0x9
+
+    if-eq v0, v6, :cond_1d
 
     :cond_1
     iget-object v0, p0, Ldil;->e:Lgzz;
 
     iget-object v0, v0, Lgzz;->b:Lihk;
 
-    invoke-virtual {v0}, Lihk;->c()Z
+    iget-boolean v0, v0, Lihk;->g:Z
 
-    if-nez v0, :cond_8
+    if-nez v0, :cond_2
 
+    iget-object v0, p0, Ldil;->e:Lgzz;
+
+    iget-object v0, v0, Lgzz;->b:Lihk;
+
+    iget-boolean v0, v0, Lihk;->f:Z
+
+    if-eqz v0, :cond_5
+
+    :cond_2
     iget-object v0, p0, Ldil;->c:Ldig;
 
     const-string v6, "persist.camera.cam_component"
@@ -643,7 +716,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_2
+    if-eqz v0, :cond_5
 
     iget-object v0, p0, Ldil;->f:Lbiv;
 
@@ -653,6 +726,7 @@
 
     invoke-virtual {v0, v3, v6}, Lbiv;->a(Ljava/lang/String;I)V
 
+    :cond_3
     sget-object v0, Ldil;->a:Ljava/lang/String;
 
     const-string v3, "Selected nexus2016Tuning OneCamera configuration."
@@ -681,8 +755,24 @@
 
     invoke-direct {v3, v6, v7, v0}, Ldql;-><init>(ILici;I)V
 
+    iget-object v0, p0, Ldil;->d:Lbhn;
+
+    invoke-virtual {v0}, Lbhn;->ims()I
+
+    move-result v0
+
+    const/4 v6, 0x4
+
+    if-gt v0, v6, :cond_4
+
     const/4 v0, 0x0
 
+    goto :goto_0
+
+    :cond_4
+    const/4 v0, 0x1
+
+    :goto_0
     invoke-direct {p0, v0}, Ldil;->a(Z)Legu;
 
     move-result-object v6
@@ -691,17 +781,17 @@
 
     invoke-direct/range {v0 .. v6}, Ldno;-><init>(Ldoc;Ldpz;Ldql;Ldqr;Ldpu;Legu;)V
 
-    :goto_0
+    :goto_1
     return-object v0
 
-    :cond_2
+    :cond_5
     iget-object v0, p0, Ldil;->e:Lgzz;
 
     iget-object v0, v0, Lgzz;->b:Lihk;
 
     iget-boolean v0, v0, Lihk;->g:Z
 
-    if-nez v0, :cond_3
+    if-nez v0, :cond_6
 
     iget-object v0, p0, Ldil;->e:Lgzz;
 
@@ -709,17 +799,17 @@
 
     iget-boolean v0, v0, Lihk;->f:Z
 
-    if-nez v0, :cond_3
+    if-nez v0, :cond_6
 
     iget-object v0, p0, Ldil;->e:Lgzz;
 
-    invoke-virtual {v0}, Lgzz;->k()Z
+    invoke-virtual {v0}, Lgzz;->c()Z
 
     move-result v0
 
-    if-eqz v0, :cond_4
+    if-eqz v0, :cond_9
 
-    :cond_3
+    :cond_6
     iget-object v0, p0, Ldil;->c:Ldig;
 
     const-string v6, "persist.camera.cam_component"
@@ -730,7 +820,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_4
+    if-eqz v0, :cond_9
 
     iget-object v0, p0, Ldil;->f:Lbiv;
 
@@ -740,6 +830,7 @@
 
     invoke-virtual {v0, v3, v6}, Lbiv;->a(Ljava/lang/String;I)V
 
+    :cond_7
     sget-object v0, Ldil;->a:Ljava/lang/String;
 
     const-string v3, "Selected pixelExperimentalFeatures OneCamera configuration."
@@ -750,8 +841,24 @@
 
     move-result-object v3
 
+    iget-object v0, p0, Ldil;->d:Lbhn;
+
+    invoke-virtual {v0}, Lbhn;->ims()I
+
+    move-result v0
+
+    const/4 v6, 0x4
+
+    if-gt v0, v6, :cond_8
+
     const/4 v0, 0x0
 
+    goto :goto_2
+
+    :cond_8
+    const/4 v0, 0x1
+
+    :goto_2
     invoke-direct {p0, v0}, Ldil;->a(Z)Legu;
 
     move-result-object v6
@@ -760,16 +867,16 @@
 
     invoke-direct/range {v0 .. v6}, Ldnn;-><init>(Ldoc;Ldpz;Ldql;Ldqr;Ldpu;Legu;)V
 
-    goto :goto_0
+    goto :goto_1
 
-    :cond_4
+    :cond_9
     iget-object v0, p0, Ldil;->e:Lgzz;
 
     iget-object v0, v0, Lgzz;->b:Lihk;
 
     iget-boolean v0, v0, Lihk;->c:Z
 
-    if-eqz v0, :cond_6
+    if-eqz v0, :cond_d
 
     iget-object v0, p0, Ldil;->d:Lbhn;
 
@@ -777,7 +884,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_6
+    if-eqz v0, :cond_d
 
     invoke-interface {p2}, Lgdq;->b()Lige;
 
@@ -785,8 +892,9 @@
 
     sget-object v6, Lige;->b:Lige;
 
-    if-ne v0, v6, :cond_6
+    if-ne v0, v6, :cond_d
 
+    :cond_a
     invoke-static {p4}, Ldil;->a(Ldii;)I
 
     move-result v0
@@ -809,14 +917,47 @@
 
     move-result-object v3
 
+    sget-object v0, Landroid/hardware/camera2/CameraCharacteristics;->INFO_SUPPORTED_HARDWARE_LEVEL:Landroid/hardware/camera2/CameraCharacteristics$Key;
+
+    invoke-interface {p2, v0}, Lgdq;->a(Landroid/hardware/camera2/CameraCharacteristics$Key;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/lang/Integer;
+
+    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
+
+    move-result v0
+
+    const/4 v5, 0x0
+
+    if-eq v0, v5, :cond_c
+
+    const/4 v5, 0x2
+
+    if-eq v0, v5, :cond_c
+
+    iget-object v0, p0, Ldil;->d:Lbhn;
+
+    invoke-virtual {v0}, Lbhn;->cgc()I
+
+    move-result v0
+
+    const/4 v5, 0x3
+
+    if-eq v0, v5, :cond_b
+
+    const/4 v5, 0x4
+
+    if-eq v0, v5, :cond_c
+
     iget-object v0, p0, Ldil;->d:Lbhn;
 
     invoke-virtual {v0}, Lbhn;->i()Z
 
     move-result v0
 
-    if-eqz v0, :cond_5
-
+    :cond_b
     sget-object v0, Ldil;->a:Ljava/lang/String;
 
     const-string v5, "Selected Nexus6HdrPlusAuto OneCamera configuration."
@@ -827,9 +968,9 @@
 
     invoke-direct {v0, v1, v2, v4, v3}, Ldnv;-><init>(Ldoc;Ldpz;Ldql;Legu;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    :cond_5
+    :cond_c
     sget-object v0, Ldil;->a:Ljava/lang/String;
 
     const-string v5, "Selected Nexus6HdrPlusAutoNoZsl OneCamera configuration."
@@ -840,24 +981,32 @@
 
     invoke-direct {v0, v1, v2, v4, v3}, Ldnw;-><init>(Ldoc;Ldpz;Ldql;Legu;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    :cond_6
+    :cond_d
     iget-object v0, p0, Ldil;->e:Lgzz;
 
-    invoke-virtual {v0}, Lgzz;->k()Z
+    iget-object v0, v0, Lgzz;->b:Lihk;
+
+    iget-boolean v0, v0, Lihk;->c:Z
+
+    if-eqz v0, :cond_e
+
+    iget-object v0, p0, Ldil;->d:Lbhn;
+
+    invoke-virtual {v0}, Lbhn;->d()Z
 
     move-result v0
 
-    if-nez v0, :cond_7
+    if-nez v0, :cond_e
 
     invoke-interface {p2}, Lgdq;->b()Lige;
 
     move-result-object v0
 
-    sget-object v6, Lige;->a:Lige;
+    sget-object v6, Lige;->b:Lige;
 
-    if-ne v0, v6, :cond_7
+    if-ne v0, v6, :cond_e
 
     sget-object v0, Ldil;->a:Ljava/lang/String;
 
@@ -869,17 +1018,183 @@
 
     move-result-object v0
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    :cond_7
+    :cond_e
+    iget-object v0, p0, Ldil;->e:Lgzz;
+
+    iget-object v0, v0, Lgzz;->b:Lihk;
+
+    iget-boolean v0, v0, Lihk;->c:Z
+
+    if-eqz v0, :cond_f
+
+    invoke-interface {p2}, Lgdq;->b()Lige;
+
+    move-result-object v0
+
+    sget-object v6, Lige;->a:Lige;
+
+    if-ne v0, v6, :cond_f
+
+    sget-object v0, Ldil;->a:Ljava/lang/String;
+
+    const-string v3, "Selected Nexus6ZslYuv OneCamera configuration."
+
+    invoke-static {v0, v3}, Lbhz;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    invoke-virtual {v1, v2}, Ldoc;->a(Ldpz;)Ldnx;
+
+    move-result-object v0
+
+    goto/16 :goto_1
+
+    :cond_f
+    iget-object v0, p0, Ldil;->e:Lgzz;
+
+    iget-object v0, v0, Lgzz;->b:Lihk;
+
+    iget-boolean v0, v0, Lihk;->b:Z
+
+    if-eqz v0, :cond_15
+
+    iget-object v0, p0, Ldil;->d:Lbhn;
+
+    invoke-virtual {v0}, Lbhn;->d()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_15
+
     sget-object v0, Ldij;->e:Ldij;
 
     invoke-virtual {v3, v0}, Ldij;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_8
+    if-eqz v0, :cond_15
 
+    :cond_10
+    sget-object v0, Ldil;->a:Ljava/lang/String;
+
+    const-string v3, "Selected Nexus5X OneCamera configuration."
+
+    invoke-static {v0, v3}, Lbhz;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    iget-object v0, p0, Ldil;->d:Lbhn;
+
+    invoke-virtual {v0}, Lbhn;->cgc()I
+
+    move-result v0
+
+    const/4 v3, 0x5
+
+    if-eq v0, v3, :cond_11
+
+    const/4 v3, 0x6
+
+    if-eq v0, v3, :cond_13
+
+    iget-object v0, p0, Ldil;->d:Lbhn;
+
+    invoke-virtual {v0}, Lbhn;->h()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_13
+
+    :cond_11
+    invoke-static {p4, p2}, Ldil;->a(Ldii;Lgdq;)Ldql;
+
+    move-result-object v3
+
+    iget-object v0, p0, Ldil;->d:Lbhn;
+
+    invoke-virtual {v0}, Lbhn;->ims()I
+
+    move-result v0
+
+    const/4 v6, 0x4
+
+    if-gt v0, v6, :cond_12
+
+    const/4 v0, 0x0
+
+    goto :goto_3
+
+    :cond_12
+    const/4 v0, 0x1
+
+    :goto_3
+    invoke-direct {p0, v0}, Ldil;->a(Z)Legu;
+
+    move-result-object v6
+
+    new-instance v0, Ldnq;
+
+    invoke-direct/range {v0 .. v6}, Ldnq;-><init>(Ldoc;Ldpz;Ldql;Ldqr;Ldpu;Legu;)V
+
+    goto/16 :goto_1
+
+    :cond_13
+    invoke-static {p4, p2}, Ldil;->a(Ldii;Lgdq;)Ldql;
+
+    move-result-object v3
+
+    iget-object v0, p0, Ldil;->d:Lbhn;
+
+    invoke-virtual {v0}, Lbhn;->ims()I
+
+    move-result v0
+
+    const/4 v6, 0x4
+
+    if-gt v0, v6, :cond_14
+
+    const/4 v0, 0x0
+
+    goto :goto_4
+
+    :cond_14
+    const/4 v0, 0x1
+
+    :goto_4
+    invoke-direct {p0, v0}, Ldil;->a(Z)Legu;
+
+    move-result-object v6
+
+    new-instance v0, Ldnr;
+
+    invoke-direct/range {v0 .. v6}, Ldnr;-><init>(Ldoc;Ldpz;Ldql;Ldqr;Ldpu;Legu;)V
+
+    goto/16 :goto_1
+
+    :cond_15
+    iget-object v0, p0, Ldil;->e:Lgzz;
+
+    iget-object v0, v0, Lgzz;->b:Lihk;
+
+    iget-boolean v0, v0, Lihk;->d:Z
+
+    if-eqz v0, :cond_17
+
+    iget-object v0, p0, Ldil;->d:Lbhn;
+
+    invoke-virtual {v0}, Lbhn;->d()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_17
+
+    sget-object v0, Ldij;->e:Ldij;
+
+    invoke-virtual {v3, v0}, Ldij;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_17
+
+    :cond_16
     sget-object v0, Ldil;->a:Ljava/lang/String;
 
     const-string v3, "Selected Nexus6P OneCamera configuration."
@@ -900,17 +1215,120 @@
 
     invoke-direct/range {v0 .. v6}, Ldnp;-><init>(Ldoc;Ldpz;Ldql;Ldqr;Ldpu;Legu;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    :cond_8
+    :cond_17
+    iget-object v0, p0, Ldil;->e:Lgzz;
+
+    iget-object v0, v0, Lgzz;->b:Lihk;
+
+    iget-boolean v0, v0, Lihk;->g:Z
+
+    if-nez v0, :cond_18
+
+    iget-object v0, p0, Ldil;->e:Lgzz;
+
+    iget-object v0, v0, Lgzz;->b:Lihk;
+
+    iget-boolean v0, v0, Lihk;->f:Z
+
+    if-eqz v0, :cond_1b
+
+    :cond_18
+    iget-object v0, p0, Ldil;->d:Lbhn;
+
+    invoke-virtual {v0}, Lbhn;->d()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1b
+
     sget-object v0, Ldij;->e:Ldij;
 
     invoke-virtual {v3, v0}, Ldij;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_9
+    if-eqz v0, :cond_1b
 
+    :cond_19
+    sget-object v0, Ldil;->a:Ljava/lang/String;
+
+    const-string v3, "Selected Pixel 2016 Zsl Hdr OneCamera configuration."
+
+    invoke-static {v0, v3}, Lbhz;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    invoke-static {p4, p2}, Ldil;->a(Ldii;Lgdq;)Ldql;
+
+    move-result-object v3
+
+    iget-object v0, p0, Ldil;->d:Lbhn;
+
+    invoke-virtual {v0}, Lbhn;->ims()I
+
+    move-result v0
+
+    const/4 v6, 0x4
+
+    if-gt v0, v6, :cond_1a
+
+    const/4 v0, 0x0
+
+    goto :goto_5
+
+    :cond_1a
+    const/4 v0, 0x1
+
+    :goto_5
+    invoke-direct {p0, v0}, Ldil;->a(Z)Legu;
+
+    move-result-object v6
+
+    new-instance v0, Ldod;
+
+    invoke-direct/range {v0 .. v6}, Ldod;-><init>(Ldoc;Ldpz;Ldql;Ldqr;Ldpu;Legu;)V
+
+    goto/16 :goto_1
+
+    :cond_1b
+    iget-object v0, p0, Ldil;->e:Lgzz;
+
+    invoke-virtual {v0}, Lgzz;->c()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1c
+
+    invoke-interface {p2}, Lgdq;->x()Z
+
+    :cond_1c
+    iget-object v0, p0, Ldil;->e:Lgzz;
+
+    invoke-virtual {v0}, Lgzz;->c()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1e
+
+    invoke-interface {p2}, Lgdq;->x()Z
+
+    iget-object v0, p0, Ldil;->d:Lbhn;
+
+    invoke-virtual {v0}, Lbhn;->d()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1e
+
+    sget-object v0, Ldij;->e:Ldij;
+
+    invoke-virtual {v3, v0}, Ldij;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1e
+
+    :cond_1d
     sget-object v0, Ldil;->a:Ljava/lang/String;
 
     const-string v3, "Selected Pixel 2017 Zsl Hdr+ OneCamera configuration."
@@ -931,9 +1349,9 @@
 
     invoke-direct/range {v0 .. v6}, Ldoe;-><init>(Ldoc;Ldpz;Ldql;Ldqr;Ldpu;Legu;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    :cond_9
+    :cond_1e
     invoke-virtual {v3}, Ldij;->ordinal()I
 
     move-result v0
@@ -995,7 +1413,7 @@
 
     invoke-direct {v0, v1, v2}, Ldoh;-><init>(Ldoc;Ldpz;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
     :pswitch_1
     sget-object v0, Ldil;->a:Ljava/lang/String;
@@ -1008,7 +1426,7 @@
 
     invoke-direct {v0, v1, v2}, Ldoi;-><init>(Ldoc;Ldpz;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
     :pswitch_2
     sget-object v0, Ldil;->a:Ljava/lang/String;
@@ -1021,7 +1439,7 @@
 
     invoke-direct {v0, v1, v2}, Ldok;-><init>(Ldoc;Ldpz;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
     :pswitch_3
     sget-object v0, Ldil;->a:Ljava/lang/String;
@@ -1034,7 +1452,9 @@
 
     invoke-direct {v0, v1, v2, v4, v5}, Ldoj;-><init>(Ldoc;Ldpz;Ldqr;Ldpu;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
+
+    nop
 
     :array_0
     .array-data 4

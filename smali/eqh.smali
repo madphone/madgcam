@@ -962,7 +962,7 @@
 
     move-result-object v10
 
-    if-eqz v10, :cond_17
+    if-eqz v10, :cond_1a
 
     const-string v0, "pref_screen_extra"
 
@@ -978,8 +978,6 @@
 
     move-result v5
 
-    const/4 v5, 0x1
-
     const-string v0, "is_advice_module_supported"
 
     invoke-virtual {v10, v0}, Landroid/os/Bundle;->getBoolean(Ljava/lang/String;)Z
@@ -989,6 +987,14 @@
     const-string v0, "is_experiemental_supported"
 
     invoke-virtual {v10, v0}, Landroid/os/Bundle;->getBoolean(Ljava/lang/String;)Z
+
+    move-result v3
+
+    iget-object v3, p0, Leqh;->e:Lbir;
+
+    iget-object v3, v3, Lbir;->b:Lbhn;
+
+    invoke-virtual {v3}, Lbhn;->ims()I
 
     move-result v3
 
@@ -1012,7 +1018,13 @@
 
     move-result v0
 
-    const/4 v0, 0x1
+    iget-object v0, p0, Leqh;->e:Lbir;
+
+    iget-object v0, v0, Lbir;->b:Lbhn;
+
+    invoke-virtual {v0}, Lbhn;->ims()I
+
+    move-result v0
 
     move v7, v4
 
@@ -1045,7 +1057,7 @@
 
     iget-boolean v3, p0, Leqh;->o:Z
 
-    if-nez v3, :cond_7
+    if-nez v3, :cond_9
 
     const-string v2, "pref_category_smartburst"
 
@@ -1053,7 +1065,7 @@
 
     move-result-object v2
 
-    check-cast v2, Landroid/preference/PreferenceCategory;
+    check-cast v2, Landroid/preference/PreferenceScreen;
 
     invoke-virtual {v0, v2}, Landroid/preference/PreferenceCategory;->removePreference(Landroid/preference/Preference;)Z
 
@@ -1075,23 +1087,23 @@
 
     invoke-virtual {v2, v3}, Lhzr;->a(Lich;)Lich;
 
-    const-string v2, "pref_category_misc"
+    const-string v2, "pref_category_advanced"
 
     invoke-virtual {v0, v2}, Landroid/preference/PreferenceCategory;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
 
     move-result-object v2
 
-    check-cast v2, Landroid/preference/PreferenceCategory;
+    check-cast v2, Landroid/preference/PreferenceScreen;
 
     iget-object v3, p0, Leqh;->c:Lgzz;
 
-    invoke-virtual {v3}, Lgzz;->j()Z
+    invoke-virtual {v3}, Lgzz;->c()Z
 
     move-result v3
 
     if-nez v3, :cond_1
 
-    const-string v3, "pref_enable_front_hdr_key"
+    const-string v3, "pref_camera_hdrplus_option_available_key"
 
     invoke-virtual {p0, v3}, Leqh;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
 
@@ -1102,19 +1114,9 @@
     invoke-virtual {v2, v3}, Landroid/preference/PreferenceScreen;->removePreference(Landroid/preference/Preference;)Z
 
     :cond_1
-    iget-object v3, p0, Leqh;->e:Lbir;
+    if-nez v7, :cond_2
 
-    iget-object v3, v3, Lbir;->b:Lbhn;
-
-    invoke-virtual {v3}, Lbhn;->k()I
-
-    move-result v3
-
-    const/4 v0, 0x1
-
-    if-eq v3, v0, :cond_2
-
-    const-string v3, "pref_enable_zsl_key"
+    const-string v3, "pref_camera_dirty_lens_key"
 
     invoke-virtual {p0, v3}, Leqh;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
 
@@ -1125,6 +1127,28 @@
     invoke-virtual {v2, v3}, Landroid/preference/PreferenceScreen;->removePreference(Landroid/preference/Preference;)Z
 
     :cond_2
+    invoke-virtual {v2}, Landroid/preference/PreferenceScreen;->getPreferenceCount()I
+
+    move-result v3
+
+    if-gtz v3, :cond_3
+
+    invoke-virtual {v0, v2}, Landroid/preference/PreferenceCategory;->removePreference(Landroid/preference/Preference;)Z
+
+    :cond_3
+    if-nez v5, :cond_4
+
+    const-string v2, "pref_category_experimental"
+
+    invoke-virtual {v0, v2}, Landroid/preference/PreferenceCategory;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroid/preference/PreferenceScreen;
+
+    invoke-virtual {v0, v2}, Landroid/preference/PreferenceCategory;->removePreference(Landroid/preference/Preference;)Z
+
+    :cond_4
     const-string v0, "pref_category_developer"
 
     invoke-virtual {p0, v0}, Leqh;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
@@ -1133,7 +1157,7 @@
 
     check-cast v0, Landroid/preference/PreferenceScreen;
 
-    if-eqz v4, :cond_10
+    if-eqz v4, :cond_12
 
     iget-object v4, p0, Leqh;->e:Lbir;
 
@@ -1181,7 +1205,7 @@
 
     move-result v5
 
-    if-eqz v5, :cond_3
+    if-eqz v5, :cond_5
 
     iget-object v5, v4, Lbir;->c:Landroid/content/SharedPreferences;
 
@@ -1189,7 +1213,7 @@
 
     move-result-object v0
 
-    :cond_3
+    :cond_5
     invoke-virtual {v3, v0}, Landroid/preference/EditTextPreference;->setText(Ljava/lang/String;)V
 
     invoke-virtual {v3, v0}, Landroid/preference/EditTextPreference;->setSummary(Ljava/lang/CharSequence;)V
@@ -1226,13 +1250,13 @@
 
     move-result v0
 
-    if-nez v0, :cond_4
+    if-nez v0, :cond_6
 
     iget-boolean v0, v4, Lbir;->o:Z
 
-    if-nez v0, :cond_8
+    if-nez v0, :cond_a
 
-    :cond_4
+    :cond_6
     move v0, v9
 
     :goto_2
@@ -1246,11 +1270,11 @@
 
     move-result v2
 
-    if-eqz v2, :cond_9
+    if-eqz v2, :cond_b
 
     iget-boolean v2, v4, Lbir;->o:Z
 
-    if-eqz v2, :cond_9
+    if-eqz v2, :cond_b
 
     move v2, v9
 
@@ -1323,11 +1347,11 @@
 
     move-result v0
 
-    if-nez v0, :cond_5
+    if-nez v0, :cond_7
 
     invoke-virtual {v3, v2}, Lbiu;->setChecked(Z)V
 
-    :cond_5
+    :cond_7
     sget-object v0, Lbip;->o:Lbku;
 
     invoke-virtual {v4, v0}, Lbir;->a(Lbku;)Landroid/preference/Preference;
@@ -1338,7 +1362,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_6
+    if-eqz v0, :cond_8
 
     sget-object v0, Lbip;->m:Lbku;
 
@@ -1360,7 +1384,7 @@
 
     invoke-virtual {v4, v0}, Lbir;->a(Lblf;)Landroid/preference/Preference;
 
-    :cond_6
+    :cond_8
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
@@ -1408,7 +1432,7 @@
     move v3, v6
 
     :goto_4
-    if-ge v3, v5, :cond_10
+    if-ge v3, v5, :cond_13
 
     invoke-virtual {v0, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
@@ -1420,7 +1444,7 @@
 
     instance-of v7, v2, Lblb;
 
-    if-eqz v7, :cond_a
+    if-eqz v7, :cond_c
 
     check-cast v2, Lblb;
 
@@ -1428,7 +1452,7 @@
 
     goto :goto_4
 
-    :cond_7
+    :cond_9
     if-eqz v2, :cond_0
 
     const-string v2, "pref_category_smartburst"
@@ -1449,20 +1473,20 @@
 
     goto/16 :goto_1
 
-    :cond_8
+    :cond_a
     move v0, v6
 
     goto/16 :goto_2
 
-    :cond_9
+    :cond_b
     move v2, v6
 
     goto/16 :goto_3
 
-    :cond_a
+    :cond_c
     instance-of v7, v2, Lblc;
 
-    if-eqz v7, :cond_b
+    if-eqz v7, :cond_d
 
     check-cast v2, Lblc;
 
@@ -1478,10 +1502,10 @@
 
     goto :goto_4
 
-    :cond_b
+    :cond_d
     instance-of v7, v2, Lble;
 
-    if-eqz v7, :cond_c
+    if-eqz v7, :cond_e
 
     check-cast v2, Lble;
 
@@ -1497,10 +1521,10 @@
 
     goto :goto_4
 
-    :cond_c
+    :cond_e
     instance-of v7, v2, Lblf;
 
-    if-eqz v7, :cond_d
+    if-eqz v7, :cond_f
 
     check-cast v2, Lblf;
 
@@ -1508,10 +1532,10 @@
 
     goto :goto_4
 
-    :cond_d
+    :cond_f
     instance-of v7, v2, Lbld;
 
-    if-eqz v7, :cond_e
+    if-eqz v7, :cond_10
 
     check-cast v2, Lbld;
 
@@ -1527,10 +1551,10 @@
 
     goto :goto_4
 
-    :cond_e
+    :cond_10
     instance-of v7, v2, Lbku;
 
-    if-eqz v7, :cond_f
+    if-eqz v7, :cond_11
 
     check-cast v2, Lbku;
 
@@ -1538,7 +1562,7 @@
 
     goto :goto_4
 
-    :cond_f
+    :cond_11
     new-instance v0, Ljava/lang/IllegalStateException;
 
     invoke-static {v2}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
@@ -1577,7 +1601,18 @@
 
     throw v0
 
-    :cond_10
+    :cond_12
+    const-string v2, "pref_category_help_and_feedback"
+
+    invoke-virtual {p0, v2}, Leqh;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
+
+    move-result-object v2
+
+    check-cast v2, Landroid/preference/PreferenceCategory;
+
+    invoke-virtual {v2, v0}, Landroid/preference/PreferenceCategory;->removePreference(Landroid/preference/Preference;)Z
+
+    :cond_13
     const-string v0, "pref_video_stabilization_key"
 
     invoke-virtual {p0, v0}, Leqh;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
@@ -1596,13 +1631,13 @@
 
     check-cast v0, Landroid/preference/PreferenceGroup;
 
-    if-nez v8, :cond_11
+    if-nez v8, :cond_14
 
     iget-object v2, p0, Leqh;->r:Lcom/google/android/apps/camera/legacy/app/settings/ManagedSwitchPreference;
 
     invoke-virtual {v0, v2}, Landroid/preference/PreferenceGroup;->removePreference(Landroid/preference/Preference;)Z
 
-    :cond_11
+    :cond_14
     iput-boolean v6, p0, Leqh;->p:Z
 
     iget-object v0, p0, Leqh;->b:Lbqn;
@@ -1645,7 +1680,7 @@
 
     iput-object v0, p0, Leqh;->m:Lacd;
 
-    if-eqz v10, :cond_12
+    if-eqz v10, :cond_15
 
     const-string v0, "pref_open_setting_page"
 
@@ -1653,7 +1688,7 @@
 
     move-result-object v2
 
-    if-eqz v2, :cond_12
+    if-eqz v2, :cond_15
 
     const-string v0, "prefscreen_top"
 
@@ -1667,7 +1702,7 @@
 
     move-result-object v2
 
-    if-eqz v2, :cond_12
+    if-eqz v2, :cond_15
 
     invoke-virtual {v2}, Landroid/preference/Preference;->getOrder()I
 
@@ -1679,7 +1714,7 @@
 
     invoke-virtual/range {v0 .. v5}, Landroid/preference/PreferenceScreen;->onItemClick(Landroid/widget/AdapterView;Landroid/view/View;IJ)V
 
-    :cond_12
+    :cond_15
     const-string v0, "pref_camera_recordlocation_key"
 
     invoke-virtual {p0, v0}, Leqh;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
@@ -1712,7 +1747,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_13
+    if-eqz v0, :cond_16
 
     iget-object v0, p0, Leqh;->i:Ljht;
 
@@ -1730,7 +1765,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_13
+    if-eqz v0, :cond_16
 
     const-string v0, "pref_category_general"
 
@@ -1792,7 +1827,7 @@
 
     move-result v0
 
-    if-nez v0, :cond_13
+    if-nez v0, :cond_16
 
     sget-object v0, Leqh;->k:Ljava/lang/String;
 
@@ -1800,7 +1835,7 @@
 
     invoke-static {v0, v1}, Lbhz;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    :cond_13
+    :cond_16
     invoke-virtual {v11}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
 
     move-result-object v0
@@ -1815,7 +1850,7 @@
 
     move-result v1
 
-    if-nez v1, :cond_14
+    if-nez v1, :cond_17
 
     const-string v1, "android.permission.ACCESS_FINE_LOCATION"
 
@@ -1827,13 +1862,13 @@
 
     move-result v0
 
-    if-eqz v0, :cond_15
+    if-eqz v0, :cond_18
 
-    :cond_14
+    :cond_17
     move v6, v9
 
-    :cond_15
-    if-eqz v6, :cond_16
+    :cond_18
+    if-eqz v6, :cond_19
 
     invoke-virtual {p0}, Leqh;->a()V
 
@@ -1851,7 +1886,7 @@
 
     move-result v0
 
-    if-nez v0, :cond_16
+    if-nez v0, :cond_19
 
     sget-object v0, Leqh;->k:Ljava/lang/String;
 
@@ -1859,10 +1894,10 @@
 
     invoke-static {v0, v1}, Lbhz;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    :cond_16
+    :cond_19
     return-void
 
-    :cond_17
+    :cond_1a
     move v4, v6
 
     move v2, v6
@@ -2057,13 +2092,13 @@
 
     if-eqz v0, :cond_2
 
-    const-string v0, "pref_category_advanced"
+    const-string v0, "pref_category_resolution_camera"
 
     invoke-virtual {p0, v0}, Leqh;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
 
     move-result-object v0
 
-    check-cast v0, Landroid/preference/PreferenceScreen;
+    check-cast v0, Landroid/preference/PreferenceCategory;
 
     const-string v2, "pref_category_smartburst"
 
@@ -2082,6 +2117,40 @@
     invoke-direct {p0, v0}, Leqh;->a(Landroid/preference/PreferenceScreen;)V
 
     :cond_2
+    const-string v0, "pref_launch_help"
+
+    invoke-virtual {p0, v0}, Leqh;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
+
+    move-result-object v0
+
+    new-instance v2, Leqj;
+
+    invoke-direct {v2, v1}, Leqj;-><init>(Landroid/app/Activity;)V
+
+    invoke-virtual {v0, v2}, Landroid/preference/Preference;->setOnPreferenceClickListener(Landroid/preference/Preference$OnPreferenceClickListener;)V
+
+    const-string v0, "pref_launch_feedback"
+
+    invoke-virtual {p0, v0}, Leqh;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
+
+    move-result-object v0
+
+    new-instance v2, Leqk;
+
+    invoke-direct {v2, v1}, Leqk;-><init>(Landroid/app/Activity;)V
+
+    invoke-virtual {v0, v2}, Landroid/preference/Preference;->setOnPreferenceClickListener(Landroid/preference/Preference$OnPreferenceClickListener;)V
+
+    invoke-virtual {p0}, Leqh;->getPreferenceScreen()Landroid/preference/PreferenceScreen;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/preference/PreferenceScreen;->getSharedPreferences()Landroid/content/SharedPreferences;
+
+    move-result-object v0
+
+    invoke-interface {v0, p0}, Landroid/content/SharedPreferences;->registerOnSharedPreferenceChangeListener(Landroid/content/SharedPreferences$OnSharedPreferenceChangeListener;)V
+
     invoke-virtual {p0}, Leqh;->b()Z
 
     move-result v0

@@ -573,7 +573,7 @@
 
     move-result-object v2
 
-    const-string v9, "pref_enable_noise_key"
+    const-string v9, "pref_input_model_key"
 
     invoke-interface {v2, v9}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
 
@@ -651,18 +651,13 @@
 
     move-result-object v6
 
-    const/4 v7, 0x0
+    invoke-static {v6}, Lcok;->ae(Lgdq;)Lcom/google/googlex/gcam/StaticMetadata;
 
-    if-le v3, v7, :cond_8
+    move-result-object v6
 
-    const/4 v7, 0x1
-
-    if-eq v3, v7, :cond_9
-
-    if-gt v3, v7, :cond_8
+    invoke-virtual {v5, v6}, Lcom/google/googlex/gcam/StaticMetadataVector;->add(Lcom/google/googlex/gcam/StaticMetadata;)V
 
     :cond_1
-    :goto_1
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
@@ -689,7 +684,7 @@
 
     if-lt v4, v6, :cond_4
 
-    :goto_2
+    :goto_1
     if-nez v0, :cond_5
 
     iget-object v0, p4, Lbpv;->a:Licu;
@@ -702,7 +697,7 @@
 
     invoke-static {v0}, Ljava/lang/System;->loadLibrary(Ljava/lang/String;)V
 
-    :goto_3
+    :goto_2
     iget-object v0, p4, Lbpv;->a:Licu;
 
     const-string v1, "Loading libhalide_hexagon_host.so from the app"
@@ -759,7 +754,7 @@
 
     move-result-object v0
 
-    :goto_4
+    :goto_3
     invoke-interface {v6, v0}, Licu;->d(Ljava/lang/String;)V
 
     iget-object v0, p4, Lbpv;->b:Landroid/content/Context;
@@ -819,7 +814,7 @@
 
     move-result-object v0
 
-    :goto_5
+    :goto_4
     invoke-interface {v4, v0}, Licu;->d(Ljava/lang/String;)V
 
     const-string v0, "ADSP_LIBRARY_PATH"
@@ -832,8 +827,14 @@
     .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_1
 
     :cond_3
-    :goto_6
-    invoke-static {v3, v5, v2}, Lcom/google/googlex/gcam/Gcam;->Create(Lcom/google/googlex/gcam/InitParams;Lcom/google/googlex/gcam/StaticMetadataVector;Lcom/google/googlex/gcam/DebugParams;)Lcom/google/googlex/gcam/Gcam;
+    :goto_5
+    iget-object v0, p4, Lbpv;->b:Landroid/content/Context;
+
+    invoke-virtual {v0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+
+    move-result-object v1
+
+    invoke-static {v3, v5, v2, v1}, LcokMod;->createGcam(Lcom/google/googlex/gcam/InitParams;Lcom/google/googlex/gcam/StaticMetadataVector;Lcom/google/googlex/gcam/DebugParams;Landroid/content/Context;)Lcom/google/googlex/gcam/Gcam;
 
     move-result-object v0
 
@@ -844,7 +845,7 @@
     :cond_4
     move v0, v1
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
     :cond_5
     :try_start_3
@@ -857,7 +858,7 @@
     .catch Ljava/lang/UnsatisfiedLinkError; {:try_start_3 .. :try_end_3} :catch_0
     .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_1
 
-    goto/16 :goto_3
+    goto/16 :goto_2
 
     :catch_0
     move-exception v0
@@ -901,7 +902,7 @@
     :try_end_4
     .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_1
 
-    goto :goto_6
+    goto :goto_5
 
     :catch_1
     move-exception v0
@@ -942,7 +943,7 @@
 
     invoke-interface {v1, v0}, Licu;->f(Ljava/lang/String;)V
 
-    goto :goto_6
+    goto :goto_5
 
     :cond_6
     :try_start_5
@@ -952,7 +953,7 @@
     :try_end_5
     .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_1
 
-    goto/16 :goto_4
+    goto/16 :goto_3
 
     :cond_7
     :try_start_6
@@ -963,7 +964,7 @@
     .catch Landroid/system/ErrnoException; {:try_start_6 .. :try_end_6} :catch_2
     .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_1
 
-    goto :goto_5
+    goto :goto_4
 
     :catch_2
     move-exception v0
@@ -1007,25 +1008,7 @@
     :try_end_7
     .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_7} :catch_1
 
-    goto/16 :goto_6
-
-    :cond_8
-    invoke-static {v6}, Lcok;->a(Lgdq;)Lcom/google/googlex/gcam/StaticMetadata;
-
-    move-result-object v6
-
-    invoke-virtual {v5, v6}, Lcom/google/googlex/gcam/StaticMetadataVector;->add(Lcom/google/googlex/gcam/StaticMetadata;)V
-
-    goto/16 :goto_1
-
-    :cond_9
-    invoke-static {v6}, Lcok;->aa(Lgdq;)Lcom/google/googlex/gcam/StaticMetadata;
-
-    move-result-object v6
-
-    invoke-virtual {v5, v6}, Lcom/google/googlex/gcam/StaticMetadataVector;->add(Lcom/google/googlex/gcam/StaticMetadata;)V
-
-    goto/16 :goto_1
+    goto/16 :goto_5
 .end method
 
 .method public static a(Ljava/io/File;)Lixk;

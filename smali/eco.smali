@@ -381,7 +381,7 @@
 
     sget-object v9, Landroid/hardware/camera2/CaptureRequest;->EDGE_MODE:Landroid/hardware/camera2/CaptureRequest$Key;
 
-    const/4 v10, 0x3
+    const/4 v10, 0x1
 
     invoke-static {v10}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -397,7 +397,7 @@
 
     sget-object v9, Landroid/hardware/camera2/CaptureRequest;->NOISE_REDUCTION_MODE:Landroid/hardware/camera2/CaptureRequest$Key;
 
-    const/4 v10, 0x4
+    const/4 v10, 0x1
 
     invoke-static {v10}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 

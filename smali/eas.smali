@@ -27,7 +27,7 @@
 
     if-eqz p5, :cond_0
 
-    invoke-virtual {p5, p4}, Lhab;->a(Lcom/google/android/libraries/camera/exif/ExifInterface;)V
+    invoke-static {}, Lgzz;->f()Z
 
     :cond_0
     iput-object p4, p0, Leas;->d:Lcom/google/android/libraries/camera/exif/ExifInterface;
